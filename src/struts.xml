@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+    <struts>
+        <package name="default" extends="struts-default">
+            <!--  <action name="firstStrutsAction" class="action.FirstStrutsAction" method="reExcute"> 這是只有Struts時直接用Action class-->
+            <action name="firstStrutsAction" class="firstStrutsAction" method="reExcute"> <!-- 當有Spring的時候則改用Spring 的Bean -->
+                <result name="firstStrutsPageA">/jsp/fistStrutsPageA.jsp</result>
+            </action>        
+        </package>
+    </struts>
+    
