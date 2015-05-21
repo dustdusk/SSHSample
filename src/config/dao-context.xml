@@ -15,8 +15,8 @@
         <!-- 在此註冊dao-->
                 
         <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-            <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-            <property name="url" value="jdbc:hsqldb:file:${project_loc}\db_data\SSHDatabase" /> 
+            <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+            <property name="url" value="jdbc:hsqldb:file:D:\Dusk\workSpace\SSHSample2\SSHSample2\db_data\SSHDatabase" />
             <property name="username" value="sa" /> 
             <property name="password" value="" /> 
         </bean>
@@ -34,10 +34,22 @@
 			 <property name="hibernateProperties">
 			    <props> 
 	                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop> 
+	                <prop key="hibernate.show_sql">true</prop>
+	                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
 	            </props> 
 			 </property>
 		</bean>
-		
-		<bean id="firstSpringDao" class="dao.FirstSpringDao">
+		<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		     <property name="sessionFactory" ref="sessionFactory"/>
 		</bean>
+		<!-- 可以直接管理dataSource的Transaction而不是透過SessionFactory
+	    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	        <property name="dataSource" ref="dataSource" />  
+	    </bean>  
+	     -->
+
+        <bean id="firstSpringDao" class="dao.FirstSpringDao"/>
+		<aop:aspectj-autoproxy/>
+		<!-- 加入此行讓@Resource能夠發揮作用 -->
+        <context:annotation-config/> 
 </beans>

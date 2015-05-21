@@ -13,12 +13,5 @@
         http://www.springframework.org/schema/aop/spring-aop-3.1.xsd ">
         
         <!-- 在此註冊Service -->
-        <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-            <!-- 此處的sessionFactory內ref的名字，需要跟dao-context.xml設定的一樣 -->
-		    <property name="sessionFactory" ref="sessionFactory"></property>
-		</bean>
         <bean id="firstSpringService" class="service.FirstSpringService"/>
-        
-        <!-- 加入此行讓@Resource能夠發揮作用 -->
-        <context:annotation-config/> 
 </beans>
