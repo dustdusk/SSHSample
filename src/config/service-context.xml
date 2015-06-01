@@ -12,6 +12,4 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-3.1.xsd ">
         
-        <!-- 在此註冊Service -->
-        <bean id="firstSpringService" class="service.FirstSpringService"/>
 </beans>

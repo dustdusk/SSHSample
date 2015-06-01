@@ -35,7 +35,7 @@
 			    <props> 
 	                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop> 
 	                <prop key="hibernate.show_sql">true</prop>
-	                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+	                <!-- <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop> -->
 	            </props> 
 			 </property>
 		</bean>
@@ -48,8 +48,13 @@
 	    </bean>  
 	     -->
 
-        <bean id="firstSpringDao" class="dao.FirstSpringDao"/>
 		<aop:aspectj-autoproxy/>
 		<!-- 加入此行讓@Resource能夠發揮作用 -->
         <context:annotation-config/> 
+        <!--  自動掃描此路徑嚇的annotation -->
+        <context:component-scan base-package="dao"/>
+        <!--  <bean id="firstSpringDao" class="dao.FirstSpringDao"/>-->
+        <context:component-scan base-package="action"/>
+        <bean id="firstStrutsAction" class="action.FirstStrutsAction"/>
+        <context:component-scan base-package="service"/>
 </beans>
