@@ -23,8 +23,8 @@
   <!-- 所有Servlet都可以取得到的預設參數 -->
    <context-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:config/action-context.xml,
-                   classpath:config/service-context.xml,
+      <param-value>classpath:config/default-context.xml,
+                   classpath:config/tx-context.xml,
                    classpath:config/dao-context.xml</param-value>
    </context-param>
    <listener>

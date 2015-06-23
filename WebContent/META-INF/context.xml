@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<context>
-    <Resource name="jdbc/SSHDatabase" auth="Container" type="javax.sql.DataSource"
-        driverClassName="org.hsqldb.jdbcDriver" url="jdbc:hsqldb:file:${project_loc}\db_data\SSHDatabase"
-        username="sa" password="" maxWait="10000" maxIdle="30" maxActive="100" />
-</context>
