@@ -3,11 +3,30 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
     "http://struts.apache.org/dtds/struts-2.1.7.dtd">
     <struts>
+        <constant name="struts.devMode" value="true"/>
+        <!-- don't user any Struts framework -->
+        <constant name="struts.ui.theme" value="simple"/>
+        
         <!-- <constant name="struts.objectFactory" value="spring" />加入這行就可以使用Annotation 去instance Action 而不用透過bean id 的方式 -->
         <package name="default" extends="struts-default">
             <!--  <action name="firstStrutsAction" class="action.FirstStrutsAction" method="reExcute"> 這是只有Struts時直接用Action class-->
-            <action name="firstStrutsAction" class="firstStrutsAction" method="reExcute"> <!-- 當有Spring的時候則改用Spring 的Bean -->
+            <action name="firstStrutsAction" class="firstStrutsAction"> <!-- 當有Spring的時候則改用Spring 的Bean name, method 可加可不加(預設method為excute)-->
                 <result name="firstStrutsPageA">/jsp/fistStrutsPageA.jsp</result>
+            </action>        
+        </package>
+        
+        <package name="CRUD_SAMPLE" extends="struts-default" namespace="/CRUDSample">
+            <action name="initial" class="CRUDSampleAction" method="initial">
+                <result>/jsp/CRUD_Sample/CRUD_Sample_List.jsp</result>
+            </action>        
+            <action name="edit" class="CRUDSampleAction" method="load">
+                <result>/jsp/CRUD_Sample/CRUD_Sample_Edit.jsp</result>
+            </action>        
+            <action name="store" class="CRUDSampleAction" method="store">
+                <result type="redirect">initial.action</result>
+            </action>        
+            <action name="remove" class="CRUDSampleAction" method="remove">
+                <result type="redirect">initial.action</result>
             </action>        
         </package>
     </struts>

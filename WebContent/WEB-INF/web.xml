@@ -9,25 +9,22 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <!-- 加入Struts 2 作為全部request及Respose的filter -->
   <filter>
-      <filter-name>struts2</filter-name>
-      <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
   </filter>
   <filter-mapping>
-      <filter-name>struts2</filter-name>
-      <url-pattern>/*</url-pattern>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
-    
   <display-name>SSHSample</display-name>
-  <!-- 所有Servlet都可以取得到的預設參數 -->
-   <context-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:config/default-context.xml,
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:config/default-context.xml,
                    classpath:config/tx-context.xml,
                    classpath:config/dao-context.xml</param-value>
-   </context-param>
-   <listener>
-      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
 </web-app>

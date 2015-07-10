@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,5 +8,21 @@
 </head>
 <body>
 This is the first Struts Page - A !
+<table>
+    <tr>
+        <td>Index</td>
+        <td></td>
+    </tr>
+<s:iterator value="sshMasterTableList" status="dataList">
+    <tr>
+        <td>
+        <s:property value="#dataList.index"/>        
+        </td>
+        <td>
+        <s:property value="#dataList.guid"/>        
+        </td>
+    </tr>
+</s:iterator>
+</table>
 </body>
 </html>

@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @EnableTransactionManagement
 public class FirstSpringDao<T> {
-	//¨Ï¥ÎAnnotationªº¤è¦¡¨ú±oSpring¤¤³]©w¦nªºBean
+	//ï¿½Ï¥ï¿½Annotationï¿½ï¿½ï¿½è¦¡ï¿½ï¿½ï¿½oSpringï¿½ï¿½ï¿½]ï¿½wï¿½nï¿½ï¿½Bean
 	@Resource
 	private SessionFactory sessionFactory = null;
 
@@ -25,16 +25,17 @@ public class FirstSpringDao<T> {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public List<T> query(T entity, Boolean newSession ){
 		Criteria criteria = null;
 		if(newSession){
 			criteria = sessionFactory.openSession().createCriteria(entity.getClass());
 		} else {
-			//¨Ï¥ÎSpring°µtrancation±±ºÞ
+			//ï¿½Ï¥ï¿½Springï¿½ï¿½trancationï¿½ï¿½ï¿½ï¿½
 			Session session = sessionFactory.getCurrentSession();
 			criteria = session.createCriteria(entity.getClass());
 		}
-		//criteria.add(Restrictions.eq("", "1")); //¥[¤J¬d¸ß±ø¥ó
+		//criteria.add(Restrictions.eq("", "1")); //ï¿½[ï¿½Jï¿½dï¿½ß±ï¿½ï¿½ï¿½
 		return criteria.list();
 	}
 

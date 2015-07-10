@@ -12,18 +12,42 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import entity.SshMasterTable;
 
-@Controller(value="firstStrutsAction")
+@Controller(value="firstStrutsAction")//設定bean Name 以防Struts 找不到
 public class FirstStrutsAction extends ActionSupport{
 
 	private static final long serialVersionUID = 1L;
-	
 	@Resource
 	private FirstSpringService firstSpringService;
+
+	private String user;
+	private List<SshMasterTable> sshMasterTableList;
 	
-	public String reExcute(){
-		@SuppressWarnings("unused")
-		List<SshMasterTable> SshMasterTableList = firstSpringService.querySSHMasterTable();
-		
+	@Override
+	public String execute() throws Exception {
+		setSshMasterTableList(firstSpringService.querySSHMasterTable());
+		setUser("Dustdusk");
 		return "firstStrutsPageA";
-	};
+	}
+
+	
+	
+//==Get/Set==================================================================================
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+
+	public List<SshMasterTable> getSshMasterTableList() {
+		return sshMasterTableList;
+	}
+
+
+	public void setSshMasterTableList(List<SshMasterTable> sshMasterTableList) {
+		this.sshMasterTableList = sshMasterTableList;
+	}
+	
 }
